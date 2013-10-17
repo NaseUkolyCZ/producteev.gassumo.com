@@ -1,4 +1,5 @@
-﻿using System;
+﻿using atollon.sync.nuefdatamodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,8 @@ namespace producteev.gassumo.com
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            MasterSynchronizer.Start();
         }
     }
 }
