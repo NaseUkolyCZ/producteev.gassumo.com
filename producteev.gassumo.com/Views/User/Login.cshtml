@@ -6,7 +6,7 @@
 }
 
 <form method="post" action="@Href("~/account/login")" class="well form-horizontal">
-  <input type="hidden" name="returnurl" value="@Href("~/")" />
+  <input type="hidden" name="returnurl" value="@ViewBag.ReturnUrl" />
   <input type="hidden" name="failureurl" value="@Href("~/user/loginfailed")" />
 
     <div class="control-group">
