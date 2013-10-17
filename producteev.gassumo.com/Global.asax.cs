@@ -13,8 +13,14 @@ namespace producteev.gassumo.com
     // visit http://go.microsoft.com/?LinkId=9394801
     public class MvcApplication : System.Web.HttpApplication
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+            (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         protected void Application_Start()
         {
+            log4net.Config.XmlConfigurator.Configure();
+            log.Info("Application started");
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
