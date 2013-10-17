@@ -28,6 +28,8 @@ namespace PiranhaCMSOak.Controllers
         }
 
         protected abstract Guid GetUserGroupId();
+        protected abstract void InsertAdditionalRegistrationProperties(dynamic UserRegistration);
+        protected abstract void PostUserInsert(int userId);
 
         [HttpPost]
         public ActionResult Create(CreateModel m)
@@ -54,7 +56,8 @@ namespace PiranhaCMSOak.Controllers
 
                     // OUR USER
                     dynamic registration = new UserRegistration(m);
-                    registration.Register();
+                    InsertAdditionalRegistrationProperties(registration);
+                    PostUserInsert(registration.Register());
 
                     if (db.SaveChanges() > 0)
                     {

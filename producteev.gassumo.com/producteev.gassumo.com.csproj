@@ -41,6 +41,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="atollon.sync.icommunicator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Source\Repos\naseukolycz-universalsync-newEntityStruct\atollon.sync.nuefdatamodel\bin\atollon.sync.icommunicator.dll</HintPath>
+    </Reference>
+    <Reference Include="atollon.sync.idata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Source\Repos\naseukolycz-universalsync-newEntityStruct\atollon.sync.nuefdatamodel\bin\atollon.sync.idata.dll</HintPath>
+    </Reference>
     <Reference Include="atollon.sync.nuefdatamodel">
       <HintPath>..\..\..\..\Source\Repos\naseukolycz-universalsync-newEntityStruct\atollon.sync.nuefdatamodel\bin\atollon.sync.nuefdatamodel.dll</HintPath>
     </Reference>
@@ -145,17 +153,21 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.PiranhaCMS.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\PiranhaCMSOak\BaseController.cs" />
     <Compile Include="Controllers\PiranhaCMSOak\UserController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SyncController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PiranhaCMSOak\User.cs" />
     <Compile Include="Models\PiranhaCMSOak\UserRegistration.cs" />
+    <Compile Include="Models\SyncSetup.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PiranhaCMSOak\Users.cs" />
+    <Compile Include="Support\PiranhaCMSOak\MyRequireHttpsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -186,6 +198,9 @@
     <Content Include="Views\User\LoginFailed.cshtml" />
     <Content Include="Views\User\RegistrationFailed.cshtml" />
     <Content Include="App_Code\OakForm.cshtml" />
+    <Content Include="Views\Sync\ChangeInfo.cshtml" />
+    <Content Include="Views\Sync\Index.cshtml" />
+    <Content Include="Views\Sync\Setup.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

@@ -57,11 +57,11 @@ namespace PiranhaCMSOak.Models
             new Confirmation("Password") { ErrorMessage = "Passwords do not match." };
         }
 
-        public void Register()
+        public int Register()
         {
             _.Password = Encrypt(_.Password);
 
-            users.Insert(this.Exclude("PasswordConfirmation", "Login"));
+            return (int)users.Insert(this.Exclude("PasswordConfirmation", "Login"));
         }
 
         public void Save()
