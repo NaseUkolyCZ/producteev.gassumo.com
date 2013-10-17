@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="atollon.sync.communicator.producteev, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Source\Repos\naseukolycz-universalsync-newEntityStruct\atollon.sync.nuefdatamodel\bin\atollon.sync.communicator.producteev.dll</HintPath>
+    </Reference>
     <Reference Include="atollon.sync.icommunicator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Source\Repos\naseukolycz-universalsync-newEntityStruct\atollon.sync.nuefdatamodel\bin\atollon.sync.icommunicator.dll</HintPath>
@@ -266,7 +270,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>2392</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:6280/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
