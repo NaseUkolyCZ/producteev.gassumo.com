@@ -1,4 +1,5 @@
-﻿using atollon.sync.nuefdatamodel;
+﻿#define VCZ
+using naseukolycz.universalsync.nuefdatamodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace producteev.gassumo.com
         protected void Application_Start()
         {
             log4net.Config.XmlConfigurator.Configure();
-            log.Info("Application started");
+            log.Info("Web producteev.gassumo.com started!");
 
             AreaRegistration.RegisterAllAreas();
 
@@ -27,7 +28,6 @@ namespace producteev.gassumo.com
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            MasterSynchronizer.Start();
         }
     }
 }

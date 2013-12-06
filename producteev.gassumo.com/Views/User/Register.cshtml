@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+@model naseukolycz.universalsync.nuefdatamodel.Models.LoginForWeb
+
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "well form-horizontal" }))
+{
+    <legend>Register</legend>
+
+    if (ViewBag.Flash != null)
+    {
+    <div class="alert-message error">
+        <a class="close" href="#">×</a>
+        <p>@ViewBag.Flash</p>
+    </div>
+    }
+    
+    <div class="control-group">
+        <label class="control-label" for="Username">@Html.LabelFor(m => m.Username)</label>
+        <div class="controls">
+            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "span4"})
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="Password">Password</label>
+        <div class="controls">
+            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "span4" })
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="Password">Confirm password</label>
+        <div class="controls">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirm password", @class = "span4"})
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for=""></label>
+        <input type="submit" value="Register" name="save" class="btn btn-primary span3" style="margin-left: 20px;" />
+    </div>
+}

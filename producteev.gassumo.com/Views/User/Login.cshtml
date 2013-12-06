@@ -1,32 +1,44 @@
 ﻿@{
     ViewBag.Title = "Login";
 }
+
 @{
-    dynamic form = new DynamicForm(new { login = "", Password = "" });
+    dynamic form = new DynamicForm(new LoginForWeb());
 }
 
-<form method="post" action="@Href("~/account/login")" class="well form-horizontal">
-  <input type="hidden" name="returnurl" value="@ViewBag.ReturnUrl" />
-  <input type="hidden" name="failureurl" value="@Href("~/user/loginfailed")" />
+@if (ViewBag.Flash != null)
+{
+    <div class="alert-message error">
+        <a class="close" href="#">×</a>
+        <p>@ViewBag.Flash</p>
+    </div>
+}
 
-    <div class="control-group">
-    <label class="control-label" for="Email">User Name</label>
-    <div class="controls">
-        @OakForm.TextBox(form.login(new Hash { { "required", "required" }, { "placeholder", "john@outlook.com" }, { "class", "span4" }, { "display", "block" } }))
-    </div>
-    </div>
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "well form-horizontal" }))
+{
+    <legend>Login</legend>
 
-    <div class="control-group">
-    <label class="control-label" for="Password">Password</label>
-    <div class="controls">
-        @OakForm.Password(form.Password(new Hash { { "required", "required" }, { "placeholder", "passW0rd" }, { "class", "span4" }, { "display", "block" } }))
-    </div>
-    </div>
+    <br />
     
     <div class="control-group">
+        <label class="control-label" for="Username">Username</label>
         <div class="controls">
-    <input type ="submit" value="Login" class="btn btn-primary span4" /> 
-            </div>
+            @OakForm.TextBox(form.Username(new Hash { { "placeholder", "Username" }, { "class", "span4" }, { "display", "block" } }))
+        </div>
     </div>
 
-</form>
+    <div class="control-group">
+        <label class="control-label" for="Password">Password</label>
+        <div class="controls">
+            @OakForm.Password(form.Password(new Hash { { "placeholder", "Password" }, { "class", "span4" }, { "display", "block" } }))
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for=""></label>
+        <input type="submit" value="Login" class="btn btn-inverse span3" style="margin-left: 20px;" />
+    </div>
+}
+
+
+

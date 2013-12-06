@@ -1,10 +1,74 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ChangeInfo";
 }
 
-<h2>Index</h2>
+@model producteev.gassumo.com.Models.SyncPageModel
 
-<a href="~/Views/Sync/Setup">Setup Exchange User Name and Password</a>
-<a href="@ViewBag.SetupProducteevToken">Setup Producteev Token</a>
+@if (ViewBag.Flash != null)
+{
+    <div class="alert-message error">
+        <a class="close" href="#">×</a>
+        <p>@ViewBag.Flash</p>
+    </div>
+}
 
+@if (ViewBag.SaveToDBSuccess != null)
+{
+    <div class="alert-message success">
+        <a class="close" href="#">x</a>
+        <p>@ViewBag.SaveToDBSuccess</p>
+    </div>
+}
 
+@if (ViewBag.NotDeletedDb != null)
+{
+    <div class="alert-message error">
+        <a class="close" href="#">x</a>
+        <p>@ViewBag.NotDeletedDb</p>
+    </div>
+}
+
+@if (ViewBag.Info != null && ViewBag.SaveToDBSuccess == null)
+{
+    <div class="alert-message info">
+        <a class="close" href="#">x</a>
+        <p>@ViewBag.Info</p>
+    </div>
+}
+
+<legend>Information about your accounts</legend>
+
+<div id="left-sync" style="float: left;">
+    @using (Html.BeginForm("Sync", "Sync", FormMethod.Post, new { @class = "well form-horizontal" }))
+    {
+        <div class="control-group">
+            <label class="control-label" for="">
+                Producteev Token
+            </label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.ProducteevToken, new { @Value = @ViewBag.ProducteevToken, @class = "span5", readOnly = "false" })<a href="@ViewBag.SetupProducteevToken" style="text-decoration: none;">
+                    <button type="button" style="margin-left: 30px;" class="btn btn-inverse span 2">Generate token!</button></a>
+            </div>
+        </div>
+    
+        <div class="control-group">
+            <label class="control-label" for="Exchange username">Exchange username</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.ExchangeUsername, new { @Value = ViewBag.ExchangeUsername, placeholder = "Exchange username", @class = "span7" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="Exchange password">Exchange password</label>
+            <div class="controls">
+                @Html.PasswordFor(m => m.ExchangePassword, new { @Value = ViewBag.ExchangePassword, placeholder = "Exchange password", @class = "span7" })
+            </div>
+        </div>
+   
+    
+        <div class="control-group">
+            <label class="control-label" for=""></label>
+            <input type="submit" value="Save" class="btn btn-primary span3" style="margin-left: 20px;" />
+        </div>
+    }
+</div>

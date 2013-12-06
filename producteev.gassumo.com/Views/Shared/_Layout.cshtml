@@ -1,29 +1,33 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>@Page.Title</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<head>
+    <title>naseukolycz - Producteev/Exchange</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        @UI.Head()
+    <link type="text/css" rel="stylesheet" href="~/content/css/bootstrap-min.css" />
+    <link type="text/css" rel="stylesheet" href="~/content/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="~/content/css/alerts.css" />
 
-        <link type="text/css" rel="stylesheet" href="~/content/css/style.css" />
+</head>
+<body>
+    <div id="top">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span style="float: left; margin-left: 30px;">You're logged for <span style="color: lime;">@User.Identity.Name</span></span>
+            @Html.ActionLink("Your account information", "Index", "Sync")<span class="separator">|</span> @Html.ActionLink("Logout", "Logout", "User", null, new { style="color: red;"})
+        }
+        else
+        {
+            @Html.ActionLink("Login", "Login", "User")<span class="separator">|</span>@Html.ActionLink("Register", "Register", "User")
+        }
+        
+    </div>
+    <div id="wrapper">
 
-        @RenderSection("head", required: false)
-    </head>
-    <body>
-        <header role="banner">
-            <div class="wrapper">
-                <a class="site-title" href="~/">@Site.SiteTitle</a>
-                <p class="site-desc">@Site.SiteDescription</p>
-                <navigation role="main-navigation">
-                    @UI.Menu(StopLevel: 1)
-                </navigation>
-            </div>
-        </header>
-        <div class="wrapper">
+        <div class="content">
             @RenderBody()
         </div>
-    </body>
-    @RenderSection("script", required: false)
+    </div>
+</body>
 </html>
